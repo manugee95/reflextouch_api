@@ -1,11 +1,13 @@
 const express = require("express")
 const mongoose = require("mongoose")
 const cors = require("cors")
+const dotenv = require("dotenv")
+dotenv.config()
 
 const app = express()
 
 mongoose
-    .connect("mongodb://127.0.0.1:27017/reflextouch")
+    .connect(process.env.MONGODB_URL)
     .then(()=> console.log("Connected to Database..."))
     .catch((err)=> console.log(err))
 
@@ -14,7 +16,7 @@ const user = require("./routes/User")
 const login = require("./routes/Login")
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "https://reflexapp.vercel.app/",
     allowedHeaders: ["Content-Type", "Authorization", "x-auth-token"],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"]
 }))
