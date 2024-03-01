@@ -16,7 +16,7 @@ const user = require("./routes/User")
 const login = require("./routes/Login")
 
 app.use(cors({
-    origin: "https://reflexapp.vercel.app/",
+    origin: "http://localhost:5173",
     allowedHeaders: ["Content-Type", "Authorization", "x-auth-token"],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"]
 }))
